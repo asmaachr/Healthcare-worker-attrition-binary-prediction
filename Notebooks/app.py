@@ -51,11 +51,14 @@ def predict():
        
     try:
         json_ = request.json # '_' since 'json' is a special word
-        print(json_)
+        # print(json_)
 
         query = pd.DataFrame(json_)
 
-        features(query)
+        
+
+        query = features(query)
+        
            
         # Select numerical and categorical features
         numerical_features = query.select_dtypes(include='number').columns
@@ -84,10 +87,13 @@ def predict():
         query = query.reindex(columns = model_columns, fill_value= 0)
                
         prediction = list(model.predict(query))
-
-        return jsonify({
+        variable= jsonify({
                "prediction":str(prediction)
-           })
+               })
+        
+
+
+        return variable
 
     except:
            return jsonify({

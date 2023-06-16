@@ -1,7 +1,36 @@
 import pandas as pd
 import numpy as np
 
-def features (df):
+
+
+
+def features_1 (df):
+    columns_to_drop=['EmployeeID','EmployeeCount','Over18','StandardHours']
+    df.drop(columns=columns_to_drop, inplace=True)
+    df['JobRole']= df['JobRole'].replace({'Administrative':'Admin'})
+    df['Shift'] = df['Shift'].astype('str')
+    df['Education'] = df['Education'].astype('str')
+    return df
+
+
+
+
+def features_2 (df):
+    columns_to_drop=['EmployeeID','EmployeeCount','Gender','Over18','PercentSalaryHike','PerformanceRating','RelationshipSatisfaction','StandardHours']
+    df.drop(columns=columns_to_drop, inplace=True)
+    df['JobRole']= df['JobRole'].replace({'Administrative':'Admin'})
+    df['Shift'] = df['Shift'].astype('str')
+    df['Education'] = df['Education'].astype('str')
+    return df
+
+
+
+
+
+
+def features_3 (df):
+    columns_to_drop=['EmployeeID','EmployeeCount','Gender','Over18','PercentSalaryHike','PerformanceRating','RelationshipSatisfaction','StandardHours']
+    df.drop(columns=columns_to_drop, inplace=True)
     df['BusinessTravel'] = df['BusinessTravel'].apply(lambda x:1 if x == 'Travel_Frequently' else 0)
     df['Education'] = df['Education'].apply(lambda x:1 if x == 5 else 0)
     df['EducationField'] = df['EducationField'].apply(lambda x: 1 if x in ["Life Sciences", "Medical", "Other"] else 0)
