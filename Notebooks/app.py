@@ -7,23 +7,9 @@ import pandas as pd
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import StandardScaler
+import FeaturesF as fe
 
 
-def features (df):
-                columns_to_drop=['EmployeeID','EmployeeCount','Gender','MonthlyRate','HourlyRate','Over18','PercentSalaryHike','PerformanceRating','RelationshipSatisfaction','StandardHours']
-                df.drop(columns=columns_to_drop, inplace=True)
-                df['BusinessTravel'] = np.where(df['BusinessTravel'] == 'Travel_Frequently', 1, 0)
-                df['Education']= np.where(df['Education'] == 5, 1, 0)
-                df['EducationField'] = np.where((df['EducationField'] == "Life Sciences") | (df['EducationField'] == "Medical") | (df['EducationField'] == "Other"), 1, 0)
-                df['EnvironmentSatisfaction'] = np.where(df['EnvironmentSatisfaction'] == 1, 1, 0)
-                df['JobInvolvement'] = np.where((df['JobInvolvement'] == 1)|(df['JobInvolvement'] == 2), 1, 0)
-                df['JobLevel'] = np.where(df['JobLevel'] == 1, 1, np.where(df['JobLevel'] == 2, 2, np.where(df['JobLevel'] == 4, 2, 0)))
-                df['JobRole'] = np.where((df['JobRole'] == 'Nurse') | (df['JobRole']== "Other") , 1, 0)
-                df['MaritalStatus']= np.where((df['MaritalStatus'] == 'Single'), 1, 0)
-                df['Shift']= np.where((df['Shift'] == 0) | (df['Shift']== 3) , 1, 0)
-                df['WorkLifeBalance']= np.where(df['WorkLifeBalance'] == 1, 1, 0)
-                df['OverTime']= df['OverTime'].replace({'No':0,'Yes':1})
-                return df
 
 # App definition
 app = Flask(__name__)
@@ -56,8 +42,7 @@ def predict():
         query = pd.DataFrame(json_)
 
         
-
-        query = features(query)
+        query = fe.features_5(query)
         
            
         # Select numerical and categorical features

@@ -69,8 +69,8 @@ def features_4 (df):
 
 
 
-def features_4 (df):
-    columns_to_drop=['EmployeeID','EmployeeCount','Gender','Over18','PercentSalaryHike','PerformanceRating','RelationshipSatisfaction','StandardHours']
+def features_5 (df):
+    columns_to_drop=['EmployeeID','EmployeeCount','Gender','Over18','PercentSalaryHike','PerformanceRating','StandardHours']
     df.drop(columns=columns_to_drop, inplace=True)
     df['BusinessTravel'] = df['BusinessTravel'].apply(lambda x:1 if x == 'Travel_Frequently' else 0)
     df['Education'] = df['Education'].apply(lambda x:1 if x == 5 else 0)
