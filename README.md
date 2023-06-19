@@ -179,6 +179,6 @@ The model was deployed using the local machine using the terminal and Postman ap
 - More Features Engineering
 - More Data: 
     - Data Augmentation
-    - Local Healthcare Facility
+    - Reel data from local Healthcare Facility
 - Different scaler and balancing functions
-
+- Explore and test the model in other industry.
