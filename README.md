@@ -32,7 +32,8 @@ The Dataset is synthetic from US IBM Watson Healthcare.
 - Limited data 1676 entries
 - 34 features categorical and numeric (excluding our target variable attrition)
 - No missing value
-- light cleaning: data type and jobRole administrative and admin
+- light cleaning: changing data type for 2 features and jobRole administrative and admin
+- dropping the following colunms: EmployeeID, Over18, StandardHours and  EmployeeCount( same value for all records)
 - The classes are imbalanced with Attrition "Yes" representing 11.87%
 ![Imbalanced-data](images/Imbalanced-data.png)
 
